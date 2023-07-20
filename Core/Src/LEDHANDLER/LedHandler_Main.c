@@ -3,6 +3,7 @@
 #include "stm32f0xx_ll_gpio.h"
 #include "stm32f0xx_hal.h"
 #include "stm32f030x6.h"
+#include "main.h"
 
 #include "../GlobalDefines.h"
 
@@ -10,8 +11,6 @@
 
 static uint32_t timeMS;
 static uint32_t prevTimeMS;
-
-static uint8_t ledSwapFlag = FALSE;
 
 static void LedHandler_TurnOnLED();
 
@@ -31,17 +30,10 @@ void LedHandler_MainFunction()
 	/* delay 1 s */
 	if (timeMS > LED_DELAY_TIME + prevTimeMS)
 	{
-		if (ledSwapFlag == TRUE)
-		{
-			LedHandler_TurnOffLED();
-			ledSwapFlag = FALSE;
-		}
-		else
-		{
-			LedHandler_TurnOnLED();
-			ledSwapFlag = TRUE;
-		}
+
 		prevTimeMS = HAL_GetTick();
+
+		LL_GPIO_TogglePin(GPIOA, LED_Pin);
 	}
 }
 
@@ -52,6 +44,6 @@ static void LedHandler_TurnOnLED()
 
 static void LedHandler_TurnOffLED()
 {
-	LL_GPIO_TogglePin(GPIOA, FALSE);
+
 }
 
