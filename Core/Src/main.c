@@ -21,7 +21,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "LEDHANDLER/LedHandler.h"
+#include "stm32f0xx_ll_gpio.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -75,7 +76,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+  LedHandler_Init();
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -97,7 +98,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	LedHandler_MainFunction();
+	// LL_GPIO_TogglePin(GPIOA, 0);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
