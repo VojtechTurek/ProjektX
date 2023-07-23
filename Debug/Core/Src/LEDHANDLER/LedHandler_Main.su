@@ -1,5 +1,5 @@
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h:896:22:LL_GPIO_TogglePin	24	static
-../Core/Src/LEDHANDLER/LedHandler_Main.c:19:6:LedHandler_Init	8	static
-../Core/Src/LEDHANDLER/LedHandler_Main.c:25:6:LedHandler_MainFunction	8	static
-../Core/Src/LEDHANDLER/LedHandler_Main.c:40:13:LedHandler_TurnOnLED	8	static
-../Core/Src/LEDHANDLER/LedHandler_Main.c:44:13:LedHandler_TurnOffLED	8	static
+../Core/Src/LEDHANDLER/LedHandler_Main.c:21:6:LedHandler_Init	8	static
+../Core/Src/LEDHANDLER/LedHandler_Main.c:27:6:LedHandler_MainFunction	8	static
+../Core/Src/LEDHANDLER/LedHandler_Main.c:42:13:LedHandler_TurnOnLED	8	static
+../Core/Src/LEDHANDLER/LedHandler_Main.c:47:13:LedHandler_TurnOffLED	8	static

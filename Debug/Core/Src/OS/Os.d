@@ -1,7 +1,8 @@
-Core/Src/LEDHANDLER/LedHandler_Main.o: \
- ../Core/Src/LEDHANDLER/LedHandler_Main.c \
- ../Core/Src/LEDHANDLER/LedHandler.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h \
+Core/Src/OS/Os.o: ../Core/Src/OS/Os.c \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
+ ../Core/Inc/stm32f0xx_hal_conf.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h \
  ../Drivers/CMSIS/Include/core_cm0.h \
@@ -9,10 +10,6 @@ Core/Src/LEDHANDLER/LedHandler_Main.o: \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h \
- ../Core/Inc/stm32f0xx_hal_conf.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h \
@@ -29,20 +26,11 @@ Core/Src/LEDHANDLER/LedHandler_Main.o: \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h \
- ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h \
- ../Core/Inc/main.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
- ../Core/Src/LEDHANDLER/../OS/Os.h \
- ../Core/Src/LEDHANDLER/../GlobalDefines.h
-../Core/Src/LEDHANDLER/LedHandler.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h:
+ ../Core/Src/OS/Os.h
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
+../Core/Inc/stm32f0xx_hal_conf.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h:
 ../Drivers/CMSIS/Include/core_cm0.h:
@@ -50,10 +38,6 @@ Core/Src/LEDHANDLER/LedHandler_Main.o: \
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/system_stm32f0xx.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:
-../Core/Inc/stm32f0xx_hal_conf.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc_ex.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:
@@ -70,15 +54,4 @@ Core/Src/LEDHANDLER/LedHandler_Main.o: \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_pwr_ex.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h:
-../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h:
-../Core/Inc/main.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_exti.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_bus.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_cortex.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
-../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
-../Core/Src/LEDHANDLER/../OS/Os.h:
-../Core/Src/LEDHANDLER/../GlobalDefines.h:
+../Core/Src/OS/Os.h:

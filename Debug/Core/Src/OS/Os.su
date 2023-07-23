@@ -1,0 +1,2 @@
+../Core/Src/OS/Os.c:11:6:Os_Init	8	static
+../Core/Src/OS/Os.c:16:10:Os_GetMs	8	static

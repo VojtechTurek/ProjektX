@@ -4,6 +4,8 @@
 #include "stm32f0xx_hal.h"
 #include "stm32f030x6.h"
 #include "main.h"
+#include "../OS/Os.h"
+
 
 #include "../GlobalDefines.h"
 
@@ -25,13 +27,13 @@ void LedHandler_Init()
 void LedHandler_MainFunction()
 {
 	/* get time in ms */
-	timeMS = HAL_GetTick();
+	timeMS = Os_GetMs();
 
 	/* delay 1 s */
 	if (timeMS > LED_DELAY_TIME + prevTimeMS)
 	{
 
-		prevTimeMS = HAL_GetTick();
+		prevTimeMS = Os_GetMs();
 
 		LL_GPIO_TogglePin(GPIOA, LED_Pin);
 	}
