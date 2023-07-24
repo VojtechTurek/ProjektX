@@ -1,0 +1,2 @@
+../Core/Src/UserCode/LEDHANDLER/LedHandler_Main.c:17:6:LedHandler_Init	0	static
+../Core/Src/UserCode/LEDHANDLER/LedHandler_Main.c:23:6:LedHandler_MainFunction	8	static

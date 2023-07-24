@@ -21,8 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LEDHANDLER/LedHandler.h"
+#include "LedHandler.h"
 #include "stm32f0xx_ll_gpio.h"
+#include "Os.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -76,6 +77,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
+  Os_Init();
   LedHandler_Init();
   /* USER CODE END Init */
 
@@ -98,7 +100,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-	  LedHandler_MainFunction();
+	  __WFI();
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
