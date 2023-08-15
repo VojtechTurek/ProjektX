@@ -14,6 +14,6 @@ void Os_Init();
 
 uint32_t Os_GetMs();
 
-void Os_scheduler();
+void Os_Scheduler();
 
 #endif /* SRC_OS_OS_H_ */

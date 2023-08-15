@@ -8,36 +8,68 @@
 #include "Os.h"
 #include "LedHandler.h"
 #include "stm32f030x6.h"
+#include "Os_Types.h"
 
 
-#define N10MS  10u
-#define N20MS  20u
+#define Time_10MS  10u
+#define Time_20MS  20u
 
-#define EVENT_10MS  0x01
+#define EVENT_10MS 	 		0x01
+#define EVENT_20MS  		0x02
+#define EVENT_RESERVED1 	0x04
+#define EVENT_RESERVED2 	0x08
+#define EVENT_RESERVED3 	0x16
+
+
+#define ALL_EVENT_MASK (EVENT_10MS | EVENT_10MS | EVENT_RESERVED1 | EVENT_RESERVED2 | EVENT_RESERVED3)
+
+/*
+static const Os_EventStruct OsEvents[] =
+{
+		{EVENT_10MS, Time_10MS, 10};
+		{EVENT_20MS, Time_20MS, 5};
+};
+*/
 
 uint32_t evMask = 0;
 
 uint32_t globalTime = 0;
 
-void Os_scheduler();
+void Os_Scheduler();
+
+static void Os_InitTask();
 
 static void Os_10msTask();
 
 static void Os_ClearEvent(uint32_t mask);
 
-void Os_Init()
+static void Os_CalculateEvent();
+
+static void Os_SetEvent();
+
+/* handling sys tick via interupt */
+void SysTick_Handler()
 {
-	__NVIC_EnableIRQ(SysTick_IRQn);
+	globalTime++;
+	/* interupt from sis timer every 1 ms, call scheduler */
+	Os_Scheduler();
 }
 
-uint32_t Os_GetMs()
+/* after task is procced of the current event, clear it */
+static void Os_ClearEvent(uint32_t mask)
 {
-	return 0;
+	evMask ^= mask;
 }
 
-void Os_scheduler()
+uint32_t Os_GetGlobalTimeMs()
 {
-	if ((globalTime % N10MS) == 0)
+	return globalTime;
+}
+
+/* Handling Tasks */
+void Os_Scheduler()
+{
+	if ((globalTime % Time_10MS) == 0)
 	{
 		evMask |= EVENT_10MS;
 	}
@@ -50,19 +82,39 @@ void Os_scheduler()
 	}
 }
 
+/* Os init, inicializate NVIC interupt for SysTick */
+void Os_Init()
+{
+	__NVIC_EnableIRQ(SysTick_IRQn);
+}
+
+/* 10ms task */
 static void Os_10msTask()
 {
 	LedHandler_MainFunction();
 }
 
-void SysTick_Handler()
+/* Init task */
+static void Os_InitTask()
 {
-	globalTime++;
-	/* interupt from sis timer every 1 ms, call scheduler */
-	Os_scheduler();
+	LedHandler_Init();
 }
 
-static void Os_ClearEvent(uint32_t mask)
+/* Calculate Event */
+static void Os_CalculateEvent()
 {
-	evMask ^= mask;
+	/* check if there is some event occur */
+	if (evMask & ALL_EVENT_MASK != 0)
+	{
+		Os_SetEvent();
+	}
+}
+
+/* set event */
+static void Os_SetEvent()
+{
+//	for (uint8_t index = 0; index < sizeof(OsEvents / Os_EventStruct); index++)
+//	{
+//		if (globalTime %)
+//	}
 }
