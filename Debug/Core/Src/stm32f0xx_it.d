@@ -15,7 +15,7 @@ Core/Src/stm32f0xx_it.o: ../Core/Src/stm32f0xx_it.c ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
- ../Core/Inc/stm32f0xx_it.h
+ ../Core/Inc/GlobalDefines.h ../Core/Inc/stm32f0xx_it.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
@@ -33,4 +33,5 @@ Core/Src/stm32f0xx_it.o: ../Core/Src/stm32f0xx_it.c ../Core/Inc/main.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
+../Core/Inc/GlobalDefines.h:
 ../Core/Inc/stm32f0xx_it.h:

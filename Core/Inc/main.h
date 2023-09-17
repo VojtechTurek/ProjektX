@@ -36,6 +36,7 @@ extern "C" {
 #include "stm32f0xx_ll_utils.h"
 #include "stm32f0xx_ll_pwr.h"
 #include "stm32f0xx_ll_dma.h"
+#include "GlobalDefines.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -66,7 +67,9 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 #define LED_Pin LL_GPIO_PIN_4
+#define Button LL_GPIO_PIN_1
 #define LED_GPIO_Port GPIOA
+#define BUTTON_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

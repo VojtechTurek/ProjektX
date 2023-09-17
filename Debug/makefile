@@ -13,6 +13,8 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/UserCode/OS/subdir.mk
 -include Core/Src/UserCode/LEDHANDLER/subdir.mk
+-include Core/Src/UserCode/IOHWAB/subdir.mk
+-include Core/Src/UserCode/ButtonLogic/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
 

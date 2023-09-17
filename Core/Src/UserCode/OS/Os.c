@@ -7,6 +7,8 @@
 
 #include "Os.h"
 #include "LedHandler.h"
+#include "IoHwAb_Main.h"
+#include "ButtonHandler_Main.h"
 #include "stm32f030x6.h"
 #include "Os_Types.h"
 
@@ -91,6 +93,8 @@ void Os_Init()
 /* 10ms task */
 static void Os_10msTask()
 {
+	IoHwAb_MainFunction();
+	ButtonHandler_MainFunction();
 	LedHandler_MainFunction();
 }
 

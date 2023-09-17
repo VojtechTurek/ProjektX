@@ -49,8 +49,9 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
-static void MX_GPIO_Init(void);
-static void MX_TIM1_Init(void);
+static void MX_GPIO_LED_Init(void);
+static void MX_GPIO_BUTTON_Init(void);
+
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -86,7 +87,8 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
-  MX_GPIO_Init();
+	MX_GPIO_LED_Init();
+	MX_GPIO_BUTTON_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
@@ -134,7 +136,7 @@ void SystemClock_Config(void)
   * @param None
   * @retval None
   */
-static void MX_GPIO_Init(void)
+static void MX_GPIO_LED_Init(void)
 {
   LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
@@ -142,6 +144,7 @@ static void MX_GPIO_Init(void)
 
   /* GPIO Ports Clock Enable */
   LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
 
   /**/
   LL_GPIO_ResetOutputPin(LED_GPIO_Port, LED_Pin);
@@ -157,6 +160,28 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
 }
+
+static void MX_GPIO_BUTTON_Init(void)
+{
+	  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
+	/* USER CODE BEGIN MX_GPIO_Init_1 */
+	/* USER CODE END MX_GPIO_Init_1 */
+
+	  /* GPIO Ports Clock Enable */
+	  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+
+	  /**/
+	  LL_GPIO_ResetOutputPin(LED_GPIO_Port, Button);
+
+	  /**/
+	  GPIO_InitStruct.Pin = Button;
+	  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
+	  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+	  //GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
+	  LL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+}
+
 
 /* USER CODE BEGIN 4 */
 

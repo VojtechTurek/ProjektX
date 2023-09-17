@@ -22,6 +22,8 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Core/Src/UserCode/ButtonLogic \
+Core/Src/UserCode/IOHWAB \
 Core/Src/UserCode/LEDHANDLER \
 Core/Src/UserCode/OS \
 Core/Src \

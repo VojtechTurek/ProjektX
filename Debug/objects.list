@@ -1,3 +1,5 @@
+"./Core/Src/UserCode/ButtonLogic/ButtonHandler_Main.o"
+"./Core/Src/UserCode/IOHWAB/IoHwAb_Main.o"
 "./Core/Src/UserCode/LEDHANDLER/LedHandler_Main.o"
 "./Core/Src/UserCode/OS/Os.o"
 "./Core/Src/main.o"
