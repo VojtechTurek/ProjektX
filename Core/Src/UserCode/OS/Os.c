@@ -88,6 +88,7 @@ void Os_Scheduler()
 void Os_Init()
 {
 	__NVIC_EnableIRQ(SysTick_IRQn);
+	Os_InitTask();
 }
 
 /* 10ms task */
@@ -101,6 +102,7 @@ static void Os_10msTask()
 /* Init task */
 static void Os_InitTask()
 {
+	IoHwAb_Init();
 	LedHandler_Init();
 }
 

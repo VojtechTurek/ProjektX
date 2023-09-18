@@ -14,6 +14,8 @@
 #include "IoHwAb_Types.h"
 #include "GlobalDefines.h"
 
+void IoHwAb_Init();
+
 void IoHwAb_MainFunction();
 
 uint32_t IoHwAb_GetInput(IoHwAb_InputMembers member);

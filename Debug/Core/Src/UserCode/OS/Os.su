@@ -4,7 +4,7 @@
 ../Core/Src/UserCode/OS/Os.c:66:10:Os_GetGlobalTimeMs	8	static
 ../Core/Src/UserCode/OS/Os.c:72:6:Os_Scheduler	8	static
 ../Core/Src/UserCode/OS/Os.c:88:6:Os_Init	8	static
-../Core/Src/UserCode/OS/Os.c:94:13:Os_10msTask	8	static
-../Core/Src/UserCode/OS/Os.c:102:13:Os_InitTask	8	static
-../Core/Src/UserCode/OS/Os.c:108:13:Os_CalculateEvent	8	static
-../Core/Src/UserCode/OS/Os.c:118:13:Os_SetEvent	8	static
+../Core/Src/UserCode/OS/Os.c:95:13:Os_10msTask	8	static
+../Core/Src/UserCode/OS/Os.c:103:13:Os_InitTask	8	static
+../Core/Src/UserCode/OS/Os.c:110:13:Os_CalculateEvent	8	static
+../Core/Src/UserCode/OS/Os.c:120:13:Os_SetEvent	8	static

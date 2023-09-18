@@ -21,8 +21,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LedHandler.h"
-#include "stm32f0xx_ll_gpio.h"
 #include "Os.h"
 /* USER CODE END Includes */
 
@@ -48,9 +46,6 @@
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-void SystemClock_Config(void);
-static void MX_GPIO_LED_Init(void);
-static void MX_GPIO_BUTTON_Init(void);
 
 /* USER CODE BEGIN PFP */
 
@@ -67,118 +62,56 @@ static void MX_GPIO_BUTTON_Init(void);
   */
 int main(void)
 {
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration--------------------------------------------------------*/
-
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 	SystemCoreClockUpdate();
 	SysTick_Config(SystemCoreClock/1000);
 	Os_Init();
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  //SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
-
-  /* Initialize all configured peripherals */
-	MX_GPIO_LED_Init();
-	MX_GPIO_BUTTON_Init();
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-    /* USER CODE END WHILE */
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1)
+	{
+	/* USER CODE END WHILE */
 	  __WFI();
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+	/* USER CODE BEGIN 3 */
+	}
+	/* USER CODE END 3 */
 }
 
 /**
   * @brief System Clock Configuration
   * @retval None
   */
-/*
-void SystemClock_Config(void)
+/*void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Initializes the RCC Oscillators according to the specified parameters
+   Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
-  *//*
+
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
-  /** Initializes the CPU, AHB and APB buses clocks
-  *//*
+  Initializes the CPU, AHB and APB buses clocks
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
   RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
-}
-*/
+}*/
+
 
 /**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
   */
-static void MX_GPIO_LED_Init(void)
-{
-  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-/* USER CODE BEGIN MX_GPIO_Init_1 */
-/* USER CODE END MX_GPIO_Init_1 */
 
-  /* GPIO Ports Clock Enable */
-  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-
-  LL_GPIO_StructInit(&GPIO_InitStruct);
-  /**/
-  LL_GPIO_ResetOutputPin(LED_GPIO_Port, LED_Pin);
-
-  /**/
-  GPIO_InitStruct.Pin = LED_Pin;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-
-/* USER CODE BEGIN MX_GPIO_Init_2 */
-/* USER CODE END MX_GPIO_Init_2 */
-}
-
-static void MX_GPIO_BUTTON_Init(void)
-{
-	  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-	/* USER CODE BEGIN MX_GPIO_Init_1 */
-	  LL_GPIO_StructInit(&GPIO_InitStruct);
-	/* USER CODE END MX_GPIO_Init_1 */
-
-	  /* GPIO Ports Clock Enable */
-	 // LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-
-	  /**/
-	  GPIO_InitStruct.Pin = Button;
-	  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
-	  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
-	  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-	  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
-	  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
-}
 
 
 /* USER CODE BEGIN 4 */
