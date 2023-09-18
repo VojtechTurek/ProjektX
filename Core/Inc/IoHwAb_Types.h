@@ -17,5 +17,19 @@ typedef enum
 	IoHwAb_InputSizeOf,
 } IoHwAb_InputMembers;
 
+typedef enum
+{
+	IoHwAb_Digital,
+	IoHwAb_Analog
+} IoHwAb_InputType;
+
+typedef struct
+{
+	IoHwAb_InputMembers input;
+	uint32_t bitMask;
+	uint32_t portId;
+	IoHwAb_InputType typeOfInput;
+} IoHwAb_DigitRefernce;
+
 
 #endif /* INC_IOHWAB_TYPES_H_ */

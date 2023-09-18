@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00020004  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00001a8f  00000000  00000000  0002002c  2**0
+ 12 .debug_info   00001b5c  00000000  00000000  0002002c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 00000b18  00000000  00000000  00021abb  2**0
+ 13 .debug_abbrev 00000b37  00000000  00000000  00021b88  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 00000260  00000000  00000000  000225d8  2**3
+ 14 .debug_aranges 00000268  00000000  00000000  000226c0  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_ranges 000001d8  00000000  00000000  00022838  2**3
+ 15 .debug_ranges 000001e0  00000000  00000000  00022928  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000982e  00000000  00000000  00022a10  2**0
+ 16 .debug_macro  00009834  00000000  00000000  00022b08  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   0000316a  00000000  00000000  0002c23e  2**0
+ 17 .debug_line   0000319b  00000000  00000000  0002c33c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    00031367  00000000  00000000  0002f3a8  2**0
+ 18 .debug_str    00031427  00000000  00000000  0002f4d7  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000050  00000000  00000000  0006070f  2**0
+ 19 .comment      00000050  00000000  00000000  000608fe  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00000670  00000000  00000000  00060760  2**2
+ 20 .debug_frame  00000690  00000000  00000000  00060950  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -230,7 +230,7 @@ Disassembly of section .text:
 08000220 <ButtonHandler_MainFunction>:
 uint32_t actualValue = 0;
 
-uint32_t ButtonHandler_Debounce();
+static uint32_t ButtonHandler_Debounce();
 
 void ButtonHandler_MainFunction()
 {
@@ -276,7 +276,7 @@ void ButtonHandler_MainFunction()
 
 08000264 <ButtonHandler_Debounce>:
 
-uint32_t ButtonHandler_Debounce()
+static uint32_t ButtonHandler_Debounce()
 {
  8000264:	b580      	push	{r7, lr}
  8000266:	af00      	add	r7, sp, #0
@@ -364,10 +364,10 @@ __STATIC_INLINE uint32_t LL_GPIO_ReadInputPort(GPIO_TypeDef *GPIOx)
  80002d6:	bd80      	pop	{r7, pc}
 
 080002d8 <IoHwAb_MainFunction>:
-#include "IoHwAb_Main.h"
 
-static uint32_t Buffer[IoHwAb_InputSizeOf];
+static void IoHwAb_GetAnalogData();
 
+/* called every 10 ms from OS */
 void IoHwAb_MainFunction()
 {
  80002d8:	b580      	push	{r7, lr}
@@ -391,6 +391,7 @@ void IoHwAb_MainFunction()
 
 080002fc <IoHwAb_GetInput>:
 
+/* interface for other components */
 uint32_t IoHwAb_GetInput(IoHwAb_InputMembers member)
 {
  80002fc:	b580      	push	{r7, lr}
@@ -399,10 +400,11 @@ uint32_t IoHwAb_GetInput(IoHwAb_InputMembers member)
  8000302:	0002      	movs	r2, r0
  8000304:	1dfb      	adds	r3, r7, #7
  8000306:	701a      	strb	r2, [r3, #0]
-
 	uint32_t retValue = 0;
  8000308:	2300      	movs	r3, #0
  800030a:	60fb      	str	r3, [r7, #12]
+
+	/* check if we are in the range of the buffer */
 	if (member < IoHwAb_InputSizeOf)
  800030c:	1dfb      	adds	r3, r7, #7
  800030e:	781b      	ldrb	r3, [r3, #0]

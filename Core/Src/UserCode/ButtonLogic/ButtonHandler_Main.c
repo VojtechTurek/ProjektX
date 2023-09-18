@@ -4,8 +4,8 @@
  *  Created on: 17. 9. 2023
  *      Author: vojte
  */
-#include "ButtonHandler_Main.h"
-#include "IoHwAb_Main.h"
+#include <ButtonHandler.h>
+#include <IoHwAb.h>
 #include "LedHandler.h"
 
 
@@ -19,7 +19,7 @@ uint32_t prevValue = 0;
 
 uint32_t actualValue = 0;
 
-uint32_t ButtonHandler_Debounce();
+static uint32_t ButtonHandler_Debounce();
 
 void ButtonHandler_MainFunction()
 {
@@ -35,7 +35,7 @@ void ButtonHandler_MainFunction()
 	}
 }
 
-uint32_t ButtonHandler_Debounce()
+static uint32_t ButtonHandler_Debounce()
 {
 	static uint32_t retValue = 0;
 	static uint32_t counter = 0;

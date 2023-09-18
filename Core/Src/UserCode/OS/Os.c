@@ -5,10 +5,10 @@
  *      Author: vojte
  */
 
+#include <ButtonHandler.h>
+#include <IoHwAb.h>
 #include "Os.h"
 #include "LedHandler.h"
-#include "IoHwAb_Main.h"
-#include "ButtonHandler_Main.h"
 #include "stm32f030x6.h"
 #include "Os_Types.h"
 

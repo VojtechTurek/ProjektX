@@ -5,11 +5,11 @@
  *      Author: vojte
  */
 
-#ifndef INC_BUTTONHANDLER_MAIN_H_
-#define INC_BUTTONHANDLER_MAIN_H_
+#ifndef INC_BUTTONHANDLER_H_
+#define INC_BUTTONHANDLER_H_
 
 #include "ButtonHander_Types.h"
 
 void ButtonHandler_MainFunction();
 
-#endif /* INC_BUTTONHANDLER_MAIN_H_ */
+#endif /* INC_BUTTONHANDLER_H_ */

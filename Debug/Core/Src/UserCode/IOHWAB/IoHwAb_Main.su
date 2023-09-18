@@ -1,3 +1,4 @@
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_gpio.h:728:26:LL_GPIO_ReadInputPort	16	static
-../Core/Src/UserCode/IOHWAB/IoHwAb_Main.c:11:6:IoHwAb_MainFunction	8	static
-../Core/Src/UserCode/IOHWAB/IoHwAb_Main.c:16:10:IoHwAb_GetInput	24	static
+../Core/Src/UserCode/IOHWAB/IoHwAb_Main.c:23:6:IoHwAb_MainFunction	8	static
+../Core/Src/UserCode/IOHWAB/IoHwAb_Main.c:29:10:IoHwAb_GetInput	24	static
+../Core/Src/UserCode/IOHWAB/IoHwAb_Main.c:42:13:IoHwAb_GetDigitalData	16	static

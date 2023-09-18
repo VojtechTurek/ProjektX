@@ -11,4 +11,6 @@
 #define TRUE 1
 #define FALSE 0
 
+#define GENERAL_ARRAY_ROWS(arr) (sizeof(arr)/sizeof(*arr)
+
 #endif /* SRC_USERCODE_GLOBALDEFINES_H_ */

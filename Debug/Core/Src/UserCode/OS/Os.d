@@ -1,5 +1,6 @@
-Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c ../Core/Inc/Os.h \
- ../Core/Inc/LedHandler.h ../Core/Inc/main.h \
+Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c \
+ ../Core/Inc/ButtonHandler.h ../Core/Inc/ButtonHander_Types.h \
+ ../Core/Inc/IoHwAb.h ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h \
@@ -16,13 +17,13 @@ Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c ../Core/Inc/Os.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
- ../Core/Inc/GlobalDefines.h ../Core/Inc/IoHwAb_Main.h \
- ../Core/Inc/IoHwAb_Types.h ../Core/Inc/ButtonHandler_Main.h \
- ../Core/Inc/ButtonHander_Types.h \
+ ../Core/Inc/GlobalDefines.h ../Core/Inc/IoHwAb_Types.h ../Core/Inc/Os.h \
+ ../Core/Inc/LedHandler.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h \
  ../Core/Inc/Os_Types.h
-../Core/Inc/Os.h:
-../Core/Inc/LedHandler.h:
+../Core/Inc/ButtonHandler.h:
+../Core/Inc/ButtonHander_Types.h:
+../Core/Inc/IoHwAb.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
@@ -41,9 +42,8 @@ Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c ../Core/Inc/Os.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
 ../Core/Inc/GlobalDefines.h:
-../Core/Inc/IoHwAb_Main.h:
 ../Core/Inc/IoHwAb_Types.h:
-../Core/Inc/ButtonHandler_Main.h:
-../Core/Inc/ButtonHander_Types.h:
+../Core/Inc/Os.h:
+../Core/Inc/LedHandler.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h:
 ../Core/Inc/Os_Types.h:
