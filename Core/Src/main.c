@@ -144,8 +144,8 @@ static void MX_GPIO_LED_Init(void)
 
   /* GPIO Ports Clock Enable */
   LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
 
+  LL_GPIO_StructInit(&GPIO_InitStruct);
   /**/
   LL_GPIO_ResetOutputPin(LED_GPIO_Port, LED_Pin);
 
@@ -155,7 +155,7 @@ static void MX_GPIO_LED_Init(void)
   GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
   GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
   GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
-  LL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
@@ -165,21 +165,19 @@ static void MX_GPIO_BUTTON_Init(void)
 {
 	  LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
 	/* USER CODE BEGIN MX_GPIO_Init_1 */
+	  LL_GPIO_StructInit(&GPIO_InitStruct);
 	/* USER CODE END MX_GPIO_Init_1 */
 
 	  /* GPIO Ports Clock Enable */
-	  LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-
-	  /**/
-	  LL_GPIO_ResetOutputPin(LED_GPIO_Port, Button);
+	 // LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
 
 	  /**/
 	  GPIO_InitStruct.Pin = Button;
 	  GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
-	  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-	  //GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
+	  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
 	  GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
-	  LL_GPIO_Init(LED_GPIO_Port, &GPIO_InitStruct);
+	  LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
 

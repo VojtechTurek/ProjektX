@@ -5,4 +5,4 @@ stm32f0xx_ll_bus.h:225:22:LL_AHB1_GRP1_EnableClock	1
 main.c:68:5:main	1
 main.c:139:13:MX_GPIO_LED_Init	1
 main.c:164:13:MX_GPIO_BUTTON_Init	1
-main.c:194:6:Error_Handler	1
+main.c:192:6:Error_Handler	1
