@@ -13,4 +13,6 @@
 
 #define GENERAL_ARRAY_ROWS(arr) (sizeof(arr)/sizeof(*arr)
 
+typedef void (*FunctionPointer)();
+
 #endif /* SRC_USERCODE_GLOBALDEFINES_H_ */

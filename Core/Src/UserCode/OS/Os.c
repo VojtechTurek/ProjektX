@@ -15,27 +15,24 @@
 
 #define Time_10MS  10u
 #define Time_20MS  20u
+#define NO_TIME		0xFFu
 
 #define EVENT_10MS 	 		0x01
 #define EVENT_20MS  		0x02
-#define EVENT_RESERVED1 	0x04
+#define EVENT_INIT 			0x04
 #define EVENT_RESERVED2 	0x08
 #define EVENT_RESERVED3 	0x16
 
+#define NUMBER_OF_TASKS		2u
 
-#define ALL_EVENT_MASK (EVENT_10MS | EVENT_10MS | EVENT_RESERVED1 | EVENT_RESERVED2 | EVENT_RESERVED3)
+#define ALL_EVENT_MASK (EVENT_10MS | EVENT_10MS | EVENT_INIT | EVENT_RESERVED2 | EVENT_RESERVED3)
 
-/*
-static const Os_EventStruct OsEvents[] =
-{
-		{EVENT_10MS, Time_10MS, 10};
-		{EVENT_20MS, Time_20MS, 5};
-};
-*/
+/* need to be consist with OsEventTasks */
+static Os_TaskStatus taskStatus[NUMBER_OF_TASKS] = {idle};
 
-uint32_t evMask = 0;
+static uint32_t evMask = 0;
 
-uint32_t globalTime = 0;
+static uint32_t globalTime = 0;
 
 void Os_Scheduler();
 
@@ -43,24 +40,39 @@ static void Os_InitTask();
 
 static void Os_10msTask();
 
-static void Os_ClearEvent(uint32_t mask);
+static void Os_ClearEvent(uint32_t event);
 
 static void Os_CalculateEvent();
 
-static void Os_SetEvent();
+static void Os_SetEvent(uint32_t event);
+
+/* need to be consist with taskStatus */
+static const Os_EventStruct OsEventTasks[NUMBER_OF_TASKS] =
+{
+		{ EVENT_10MS, Time_10MS, 10, &taskStatus[0], Os_10msTask },
+		{ EVENT_INIT, NO_TIME, 5, &taskStatus[1], Os_InitTask },
+};
 
 /* handling sys tick via interupt */
 void SysTick_Handler()
 {
 	globalTime++;
+	/* check time events */
+	Os_CalculateEvent();
 	/* interupt from sis timer every 1 ms, call scheduler */
 	Os_Scheduler();
 }
 
 /* after task is procced of the current event, clear it */
-static void Os_ClearEvent(uint32_t mask)
+static void Os_ClearEvent(uint32_t event)
 {
-	evMask ^= mask;
+	evMask ^= event;
+}
+
+/* set event */
+static void Os_SetEvent(uint32_t event)
+{
+	evMask |= event;
 }
 
 uint32_t Os_GetGlobalTimeMs()
@@ -71,23 +83,30 @@ uint32_t Os_GetGlobalTimeMs()
 /* Handling Tasks */
 void Os_Scheduler()
 {
-	if ((globalTime % Time_10MS) == 0)
-	{
-		evMask |= EVENT_10MS;
-	}
 	/* 10 ms task */
-	if ((evMask & EVENT_10MS) == 1)
+	for (uint8_t index = 0; index < (sizeof(OsEventTasks) / sizeof(Os_EventStruct)); index++)
 	{
-		Os_10msTask();
-
-		Os_ClearEvent(EVENT_10MS);
+		/* event present, start the task */
+		if ((evMask & OsEventTasks[index].event) != 0)
+		{
+			/* check task status, if it is already running */
+			if(*(OsEventTasks[index].taskStatus) == idle)
+			{
+				*(OsEventTasks[index].taskStatus) = running;
+				OsEventTasks[index].ptrToTask();
+				*(OsEventTasks[index].taskStatus) = idle;
+				Os_ClearEvent(OsEventTasks[index].event);
+			}
+		}
 	}
 }
 
 /* Os init, inicializate NVIC interupt for SysTick */
 void Os_Init()
 {
+	memset(taskStatus, idle, sizeof(taskStatus));
 	__NVIC_EnableIRQ(SysTick_IRQn);
+
 	Os_InitTask();
 }
 
@@ -106,21 +125,18 @@ static void Os_InitTask()
 	LedHandler_Init();
 }
 
-/* Calculate Event */
+/* Calculate Timme Event */
 static void Os_CalculateEvent()
 {
-	/* check if there is some event occur */
-	if (evMask & ALL_EVENT_MASK != 0)
+	for (uint8_t index = 0; index < (sizeof(OsEventTasks) / sizeof(Os_EventStruct)); index++)
 	{
-		Os_SetEvent();
+		/* check if the event is cylic */
+		if (OsEventTasks[index].timeMs != NO_TIME)
+		{
+			if ((globalTime % OsEventTasks[index].timeMs) == 0)
+			{
+				Os_SetEvent(OsEventTasks[index].event);
+			}
+		}
 	}
-}
-
-/* set event */
-static void Os_SetEvent()
-{
-//	for (uint8_t index = 0; index < sizeof(OsEvents / Os_EventStruct); index++)
-//	{
-//		if (globalTime %)
-//	}
 }
