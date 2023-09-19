@@ -11,6 +11,7 @@
 #include "LedHandler.h"
 #include "stm32f030x6.h"
 #include "Os_Types.h"
+#include "string.h"
 
 
 #define Time_10MS  10u
@@ -107,7 +108,7 @@ void Os_Init()
 	memset(taskStatus, idle, sizeof(taskStatus));
 	__NVIC_EnableIRQ(SysTick_IRQn);
 
-	Os_InitTask();
+	Os_SetEvent(EVENT_INIT);
 }
 
 /* 10ms task */
