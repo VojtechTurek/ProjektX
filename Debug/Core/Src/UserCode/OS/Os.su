@@ -7,4 +7,4 @@
 ../Core/Src/UserCode/OS/Os.c:106:6:Os_Init	8	static
 ../Core/Src/UserCode/OS/Os.c:115:13:Os_10msTask	8	static
 ../Core/Src/UserCode/OS/Os.c:123:13:Os_InitTask	8	static
-../Core/Src/UserCode/OS/Os.c:130:13:Os_CalculateEvent	16	static
+../Core/Src/UserCode/OS/Os.c:131:13:Os_CalculateEvent	16	static

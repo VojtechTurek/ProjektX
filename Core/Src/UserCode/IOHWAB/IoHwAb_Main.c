@@ -7,13 +7,15 @@
 #include <IoHwAb.h>
 #include <string.h>
 
+
+
 /* Buffer where all RAW data will be stored */
 static uint32_t Buffer[IoHwAb_InputSizeOf];
 
 /* Table where we are connect all inputs. Every 10 ms will be measured. */
 static const IoHwAb_DigitRefernce tableOfInputsReferences[] =
 {
-	{ IoHwAb_Button0, Button, GPIOA, IoHwAb_Digital },
+	{ IoHwAb_Button0, BUTTON_ON_OFF, GPIOA, IoHwAb_Digital },
 };
 
 static void IoHwAb_GetDigitalData();
@@ -74,7 +76,7 @@ static void IoHwAb_InitDrivers()
 
 	/* BuildIn LED initialization */
 	LL_GPIO_StructInit(&GPIO_InitStruct);
-	GPIO_InitStruct.Pin = LED_Pin;
+	GPIO_InitStruct.Pin = LED_BUILTIN;
 	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
 	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
 	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
@@ -83,10 +85,32 @@ static void IoHwAb_InitDrivers()
 
 	/* Button initialization */
 	LL_GPIO_StructInit(&GPIO_InitStruct);
-	GPIO_InitStruct.Pin = Button;
+	GPIO_InitStruct.Pin = BUTTON_ON_OFF;
 	GPIO_InitStruct.Mode = LL_GPIO_MODE_INPUT;
-	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
 	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
 	GPIO_InitStruct.Pull = LL_GPIO_PULL_UP;
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	/* EXTERNAL_LED initialization */
+	LL_GPIO_StructInit(&GPIO_InitStruct);
+	GPIO_InitStruct.Pin = EXTERNAL_LED;
+	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
+	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+	GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
+
+void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, boolean value)
+{
+	if (value == TRUE)
+	{
+		LL_GPIO_SetOutputPin(port, pin);
+	}
+	else
+	{
+		LL_GPIO_ResetOutputPin(port, pin);
+	}
+}
+

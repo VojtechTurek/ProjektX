@@ -1,2 +1,5 @@
-ButtonHandler_Main.c:24:6:ButtonHandler_MainFunction	3
-ButtonHandler_Main.c:38:17:ButtonHandler_Debounce	3
+ButtonHandler_Main.c:26:6:ButtonHandler_Init	1
+ButtonHandler_Main.c:32:6:ButtonHandler_MainFunction	3
+ButtonHandler_Main.c:55:16:ButtonHandler_Debounce	3
+ButtonHandler_Main.c:86:13:ButtonHandler_CheckHold	3
+ButtonHandler_Main.c:107:17:ButtonHandler_GetButtonState	1

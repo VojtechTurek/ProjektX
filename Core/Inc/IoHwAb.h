@@ -20,5 +20,7 @@ void IoHwAb_MainFunction();
 
 uint32_t IoHwAb_GetInput(IoHwAb_InputMembers member);
 
+void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, boolean value);
+
 
 #endif /* INC_IOHWAB_H_ */

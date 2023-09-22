@@ -1,6 +1,3 @@
-stm32f0xx_ll_gpio.h:769:22:LL_GPIO_WriteOutputPort	1
-stm32f0xx_ll_gpio.h:896:22:LL_GPIO_TogglePin	1
-LedHandler_Main.c:8:6:LedHandler_Init	1
-LedHandler_Main.c:14:6:LedHandler_MainFunction	1
-LedHandler_Main.c:27:6:LedHandler_TurnOnLED	1
-LedHandler_Main.c:32:6:LedHandler_TurnOffLED	1
+LedHandler_Main.c:14:6:LedHandler_Init	1
+LedHandler_Main.c:20:6:LedHandler_MainFunction	2
+LedHandler_Main.c:34:8:LedHandler_ProcessState	3

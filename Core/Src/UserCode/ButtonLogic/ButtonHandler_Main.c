@@ -7,54 +7,104 @@
 #include <ButtonHandler.h>
 #include <IoHwAb.h>
 #include "LedHandler.h"
+#include <string.h>
 
+#define CALLTIME 10u
 
-#define NOTYETMEASUREMENT 10
+#define DEBOUNCE_MS 40u
+#define HOLD_TIME_MS 250u
 
-uint32_t debouncedValue = 0;
+#define DEBOUNCE_TIMER DEBOUNCE_MS / CALLTIME
+#define HOLD_TIMER HOLD_TIME_MS / CALLTIME
 
-uint32_t prevDebouncedValue = 0;
+static buttonPossition buttonsPosition[IoHwAb_InputSizeOf];
 
-uint32_t prevValue = 0;
+static boolean ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue);
 
-uint32_t actualValue = 0;
+static void ButtonHandler_CheckHold();
 
-static uint32_t ButtonHandler_Debounce();
+void ButtonHandler_Init()
+{
+	/* set buttons to idle position */
+	memset(&buttonsPosition, POS_IDLE, sizeof(buttonsPosition));
+}
 
 void ButtonHandler_MainFunction()
 {
-	actualValue = IoHwAb_GetInput(IoHwAb_Button0);
+	static debounceStuct buttons = {0};
 
-	if (ButtonHandler_Debounce())
+	static uint32_t value = 0;
+
+	value = IoHwAb_GetInput(IoHwAb_Button0);
+
+	/* is the value debounced */
+	if (ButtonHandler_Debounce(&buttons, value))
 	{
-		if(prevDebouncedValue != debouncedValue)
+		if (value == 0)
 		{
-			LedHandler_TurnOnLED();
-			prevDebouncedValue = debouncedValue;
+			buttonsPosition[IoHwAb_Button0] = POS_PRESSED;
+			//ButtonHandler_CheckHold();
+		}
+		else
+		{
+			buttonsPosition[IoHwAb_Button0] = POS_IDLE;
 		}
 	}
 }
 
-static uint32_t ButtonHandler_Debounce()
+static boolean ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue)
 {
-	static uint32_t retValue = 0;
-	static uint32_t counter = 0;
+	boolean retValue = FALSE;
 
-	if(prevValue == actualValue)
+	/* values are the same check if the timer for debounce was passed */
+	if (data->prevValue == actualValue)
 	{
-		counter++;
-		if (counter == 4)
+		/* not yet debounced */
+		if (data->debounceTime < DEBOUNCE_TIMER)
+		{
+			data->debounceTime--;
+			retValue = FALSE;
+
+		}
+		else
 		{
 			retValue = TRUE;
-			debouncedValue = actualValue;
 		}
 	}
 	else
 	{
-		counter = 0;
+		/* values are different, reset debounce counter */
+		data->debounceTime = DEBOUNCE_TIMER;
+		retValue = FALSE;
 	}
 
-	prevValue = actualValue;
+	data->prevValue = actualValue;
 
 	return retValue;
+}
+
+static void ButtonHandler_CheckHold()
+{
+	static uint32_t holdtime = 0;
+
+	if (buttonsPosition[IoHwAb_Button0] == POS_PRESSED)
+	{
+		if (holdtime < HOLD_TIMER)
+		{
+			holdtime++;
+		}
+		else
+		{
+			buttonsPosition[IoHwAb_Button0] = POS_HOLD;
+		}
+	}
+	else
+	{
+		holdtime = 0;
+	}
+}
+
+buttonPossition ButtonHandler_GetButtonState(IoHwAb_InputMembers member)
+{
+	return buttonsPosition[member];
 }

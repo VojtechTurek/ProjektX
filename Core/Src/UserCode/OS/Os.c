@@ -124,6 +124,7 @@ static void Os_InitTask()
 {
 	IoHwAb_Init();
 	LedHandler_Init();
+	ButtonHandler_Init();
 }
 
 /* Calculate Timme Event */

@@ -17,7 +17,9 @@ Core/Src/UserCode/LEDHANDLER/LedHandler_Main.o: \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
- ../Core/Inc/GlobalDefines.h
+ ../Core/Inc/GlobalDefines.h ../Core/Inc/LedHandler_Types.h \
+ ../Core/Inc/IoHwAb.h ../Core/Inc/IoHwAb_Types.h \
+ ../Core/Inc/ButtonHandler.h ../Core/Inc/ButtonHander_Types.h
 ../Core/Inc/LedHandler.h:
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h:
@@ -37,3 +39,8 @@ Core/Src/UserCode/LEDHANDLER/LedHandler_Main.o: \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
 ../Core/Inc/GlobalDefines.h:
+../Core/Inc/LedHandler_Types.h:
+../Core/Inc/IoHwAb.h:
+../Core/Inc/IoHwAb_Types.h:
+../Core/Inc/ButtonHandler.h:
+../Core/Inc/ButtonHander_Types.h:

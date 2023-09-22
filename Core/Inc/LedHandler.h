@@ -11,6 +11,7 @@
 #include "stdint.h"
 #include "main.h"
 #include "stm32f0xx_ll_gpio.h"
+#include "LedHandler_Types.h"
 
 void LedHandler_MainFunction();
 
