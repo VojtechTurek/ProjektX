@@ -1,0 +1,15 @@
+stm32f0xx_ll_adc.h:1833:22:LL_ADC_REG_SetTriggerSource	1
+stm32f0xx_ll_adc.h:2769:22:LL_ADC_Disable	1
+stm32f0xx_ll_adc.h:2788:26:LL_ADC_IsEnabled	1
+stm32f0xx_ll_adc.h:2799:26:LL_ADC_IsDisableOngoing	1
+stm32f0xx_ll_adc.h:2896:22:LL_ADC_REG_StopConversion	1
+stm32f0xx_ll_adc.h:2912:26:LL_ADC_REG_IsConversionOngoing	1
+stm32f0xx_ll_adc.h:2923:26:LL_ADC_REG_IsStopConversionOngoing	1
+stm32f0xx_ll_bus.h:776:22:LL_APB1_GRP2_ForceReset	1
+stm32f0xx_ll_bus.h:813:22:LL_APB1_GRP2_ReleaseReset	1
+stm32f0xx_ll_adc.c:169:13:LL_ADC_CommonDeInit	1
+stm32f0xx_ll_adc.c:199:13:LL_ADC_DeInit	9
+stm32f0xx_ll_adc.c:371:13:LL_ADC_Init	2
+stm32f0xx_ll_adc.c:423:6:LL_ADC_StructInit	1
+stm32f0xx_ll_adc.c:466:13:LL_ADC_REG_Init	2
+stm32f0xx_ll_adc.c:528:6:LL_ADC_REG_StructInit	1

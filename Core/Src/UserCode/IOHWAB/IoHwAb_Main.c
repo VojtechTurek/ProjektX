@@ -8,7 +8,6 @@
 #include <string.h>
 
 
-
 /* Buffer where all RAW data will be stored */
 static uint32_t Buffer[IoHwAb_InputSizeOf];
 
@@ -22,13 +21,16 @@ static void IoHwAb_GetDigitalData();
 
 //static void IoHwAb_GetAnalogData();
 
-static void IoHwAb_InitDrivers();
+static void IoHwAb_InitTimers();
+
+static void IoHwAb_InitPorts();
 
 void IoHwAb_Init()
 {
 	memset(&Buffer,0, sizeof(Buffer));
 
-	IoHwAb_InitDrivers();
+	IoHwAb_InitPorts();
+	IoHwAb_InitTimers();
 }
 
 /* called every 10 ms from OS */
@@ -68,9 +70,9 @@ static void IoHwAb_GetDigitalData()
 }
 
 
-static void IoHwAb_InitDrivers()
+static void IoHwAb_InitPorts()
 {
-	LL_GPIO_InitTypeDef GPIO_InitStruct ;
+	LL_GPIO_InitTypeDef GPIO_InitStruct;
 
 	LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
 
@@ -102,6 +104,22 @@ static void IoHwAb_InitDrivers()
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 }
 
+static void IoHwAb_InitTimers()
+{
+	LL_TIM_InitTypeDef TIM_Init_Struct;
+
+	LL_AHB1_GRP1_EnableClock(LL_APB1_GRP2_PERIPH_TIM1);
+
+	LL_TIM_StructInit(&TIM_Init_Struct);
+
+	TIM_Init_Struct.Prescaler         = (uint16_t)0x0000;
+	TIM_Init_Struct.Autoreload        = 0x5U;
+	TIM_Init_Struct.CounterMode       = LL_TIM_COUNTERMODE_DOWN;
+
+	LL_TIM_Init(TIM1, &TIM_Init_Struct);
+
+}
+
 void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, boolean value)
 {
 	if (value == TRUE)
@@ -112,5 +130,11 @@ void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, boolean value)
 	{
 		LL_GPIO_ResetOutputPin(port, pin);
 	}
+}
+
+void TIM1_IRQHandler()
+{
+	static uint32_t count = 0;
+	count++;
 }
 

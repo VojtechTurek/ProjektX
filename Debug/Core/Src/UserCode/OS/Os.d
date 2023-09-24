@@ -17,7 +17,8 @@ Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_rcc.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
- ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h ../Core/Inc/Os.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h ../Core/Inc/Os.h \
  ../Core/Inc/LedHandler.h ../Core/Inc/LedHandler_Types.h \
  ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x6.h \
  ../Core/Inc/Os_Types.h
@@ -43,6 +44,7 @@ Core/Src/UserCode/OS/Os.o: ../Core/Src/UserCode/OS/Os.c \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h:
 ../Core/Inc/Os.h:
 ../Core/Inc/LedHandler.h:
 ../Core/Inc/LedHandler_Types.h:

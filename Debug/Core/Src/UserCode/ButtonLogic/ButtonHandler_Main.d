@@ -19,6 +19,7 @@ Core/Src/UserCode/ButtonLogic/ButtonHandler_Main.o: \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h \
  ../Core/Inc/LedHandler.h ../Core/Inc/LedHandler_Types.h
 ../Core/Inc/ButtonHandler.h:
 ../Core/Inc/ButtonHander_Types.h:
@@ -42,5 +43,6 @@ Core/Src/UserCode/ButtonLogic/ButtonHandler_Main.o: \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h:
 ../Core/Inc/LedHandler.h:
 ../Core/Inc/LedHandler_Types.h:

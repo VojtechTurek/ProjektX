@@ -107,7 +107,7 @@ void Os_Init()
 {
 	memset(taskStatus, idle, sizeof(taskStatus));
 	__NVIC_EnableIRQ(SysTick_IRQn);
-
+	__NVIC_EnableIRQ(TIM1_CC_IRQn);
 	Os_SetEvent(EVENT_INIT);
 }
 

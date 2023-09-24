@@ -13,6 +13,7 @@
 #include "stm32f0xx_ll_gpio.h"
 #include "IoHwAb_Types.h"
 #include "GlobalDefines.h"
+#include "stm32f0xx_ll_tim.h"
 
 void IoHwAb_Init();
 
