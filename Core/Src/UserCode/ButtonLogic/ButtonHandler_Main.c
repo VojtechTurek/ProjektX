@@ -7,7 +7,7 @@
 #include <ButtonHandler.h>
 #include <IoHwAb.h>
 #include "LedHandler.h"
-#include <string.h>
+//#include <string.h>
 
 #define CALLTIME 10u
 
