@@ -120,9 +120,9 @@ static void IoHwAb_InitTimers()
 
 }
 
-void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, boolean value)
+void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, bool value)
 {
-	if (value == TRUE)
+	if (value == true)
 	{
 		LL_GPIO_SetOutputPin(port, pin);
 	}

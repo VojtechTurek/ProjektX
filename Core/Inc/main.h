@@ -59,7 +59,7 @@ extern "C" {
 /* USER CODE END EM */
 
 /* Exported functions prototypes ---------------------------------------------*/
-void Error_Handler(void);
+uint32_t GetTime_MS(void);
 
 /* USER CODE BEGIN EFP */
 

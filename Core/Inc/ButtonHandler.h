@@ -11,6 +11,7 @@
 #include "ButtonHander_Types.h"
 #include "GlobalDefines.h"
 #include "IoHwAb_Types.h"
+#include <stdbool.h>
 
 void ButtonHandler_Init();
 

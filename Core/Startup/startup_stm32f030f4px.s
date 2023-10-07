@@ -152,7 +152,7 @@ g_pfnVectors:
   .word  DMA1_Channel4_5_IRQHandler        /* DMA1 Channel 4 and Channel 5 */
   .word  ADC1_IRQHandler                   /* ADC1                         */
   .word  TIM1_BRK_UP_TRG_COM_IRQHandler    /* TIM1 Break, Update, Trigger and Commutation */
-  .word  TIM1_IRQHandler                /* TIM1 Capture Compare         */
+  .word  TIM1_CC_IRQHandler                /* TIM1 Capture Compare         */              /* TIM1 Capture Compare         */
   .word  0                                 /* Reserved                     */
   .word  TIM3_IRQHandler                   /* TIM3                         */
   .word  0                                 /* Reserved                     */

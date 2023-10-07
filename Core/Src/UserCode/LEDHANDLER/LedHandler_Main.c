@@ -37,13 +37,13 @@ static LedHandler_ProcessState()
 	{
 		case LED_OFF:
 
-				IoHwAb_SetPin(LED_BUILTIN, GPIOA, FALSE);
+				IoHwAb_SetPin(LED_BUILTIN, GPIOA, false);
 
 			break;
 
 		case LED_ON:
 
-				IoHwAb_SetPin(LED_BUILTIN, GPIOA, TRUE);
+				IoHwAb_SetPin(LED_BUILTIN, GPIOA, true);
 
 			break;
 

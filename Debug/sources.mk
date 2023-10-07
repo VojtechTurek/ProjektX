@@ -25,7 +25,6 @@ SUBDIRS := \
 Core/Src/UserCode/ButtonLogic \
 Core/Src/UserCode/IOHWAB \
 Core/Src/UserCode/LEDHANDLER \
-Core/Src/UserCode/OS \
 Core/Src \
 Core/Startup \
 Drivers/STM32F0xx_HAL_Driver/Src \

@@ -19,7 +19,7 @@
 
 static buttonPossition buttonsPosition[IoHwAb_InputSizeOf];
 
-static boolean ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue);
+static bool ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue);
 
 static void ButtonHandler_CheckHold();
 
@@ -52,9 +52,9 @@ void ButtonHandler_MainFunction()
 	}
 }
 
-static boolean ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue)
+static bool ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue)
 {
-	boolean retValue = FALSE;
+	bool retValue = false;
 
 	/* values are the same check if the timer for debounce was passed */
 	if (data->prevValue == actualValue)
@@ -63,19 +63,19 @@ static boolean ButtonHandler_Debounce(debounceStuct* data, uint32_t actualValue)
 		if (data->debounceTime < DEBOUNCE_TIMER)
 		{
 			data->debounceTime--;
-			retValue = FALSE;
+			retValue = false;
 
 		}
 		else
 		{
-			retValue = TRUE;
+			retValue = true;
 		}
 	}
 	else
 	{
 		/* values are different, reset debounce counter */
 		data->debounceTime = DEBOUNCE_TIMER;
-		retValue = FALSE;
+		retValue = false;
 	}
 
 	data->prevValue = actualValue;

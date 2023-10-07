@@ -21,7 +21,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Os.h"
+#include "LedHandler.h"
+#include "IoHwAb.h"
+#include "ButtonHandler.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -42,7 +44,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint32_t globalTime = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -65,9 +67,15 @@ int main(void)
 	/* USER CODE BEGIN Init */
 	SystemCoreClockUpdate();
 	SysTick_Config(SystemCoreClock/1000);
-	Os_Init();
-	/* USER CODE END Init */
 
+	__NVIC_EnableIRQ(SysTick_IRQn);
+	__NVIC_EnableIRQ(TIM1_BRK_UP_TRG_COM_IRQn);
+	__NVIC_EnableIRQ(TIM1_CC_IRQn);
+
+
+	IoHwAb_Init();
+	LedHandler_Init();
+	ButtonHandler_Init();
 
 
 	/* Infinite loop */
@@ -75,7 +83,10 @@ int main(void)
 	while (1)
 	{
 	/* USER CODE END WHILE */
-	  __WFI();
+		IoHwAb_MainFunction();
+		ButtonHandler_MainFunction();
+		LedHandler_MainFunction();
+		 __WFI();
 	/* USER CODE BEGIN 3 */
 	}
 	/* USER CODE END 3 */
@@ -106,31 +117,17 @@ int main(void)
 }*/
 
 
-/**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
 
-
+/* handling sys tick via interupt */
+void SysTick_Handler()
+{
+	globalTime++;
+}
 
 /* USER CODE BEGIN 4 */
-
-/* USER CODE END 4 */
-
-/**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
+uint32_t GetTime_MS(void)
 {
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  __disable_irq();
-  while (1)
-  {
-  }
-  /* USER CODE END Error_Handler_Debug */
+	return globalTime;
 }
 
 #ifdef  USE_FULL_ASSERT

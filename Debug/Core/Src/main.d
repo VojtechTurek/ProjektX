@@ -15,7 +15,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_utils.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h \
  ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h \
- ../Core/Inc/GlobalDefines.h ../Core/Inc/Os.h
+ ../Core/Inc/GlobalDefines.h ../Core/Inc/LedHandler.h ../Core/Inc/main.h \
+ ../Core/Inc/LedHandler_Types.h ../Core/Inc/IoHwAb.h \
+ ../Core/Inc/IoHwAb_Types.h \
+ ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h \
+ ../Core/Inc/ButtonHandler.h ../Core/Inc/ButtonHander_Types.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_system.h:
 ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:
@@ -34,4 +38,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_pwr.h:
 ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_dma.h:
 ../Core/Inc/GlobalDefines.h:
-../Core/Inc/Os.h:
+../Core/Inc/LedHandler.h:
+../Core/Inc/main.h:
+../Core/Inc/LedHandler_Types.h:
+../Core/Inc/IoHwAb.h:
+../Core/Inc/IoHwAb_Types.h:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_ll_tim.h:
+../Core/Inc/ButtonHandler.h:
+../Core/Inc/ButtonHander_Types.h:
