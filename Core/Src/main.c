@@ -68,10 +68,8 @@ int main(void)
 	SystemCoreClockUpdate();
 	SysTick_Config(SystemCoreClock/1000);
 
-	__NVIC_EnableIRQ(SysTick_IRQn);
 	__NVIC_EnableIRQ(TIM1_BRK_UP_TRG_COM_IRQn);
 	__NVIC_EnableIRQ(TIM1_CC_IRQn);
-
 
 	IoHwAb_Init();
 	LedHandler_Init();

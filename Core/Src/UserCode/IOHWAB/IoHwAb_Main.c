@@ -67,6 +67,7 @@ static void IoHwAb_GetDigitalData()
 			continue;
 		}
 	}
+
 }
 
 
@@ -97,7 +98,7 @@ static void IoHwAb_InitPorts()
 	/* EXTERNAL_LED initialization */
 	LL_GPIO_StructInit(&GPIO_InitStruct);
 	GPIO_InitStruct.Pin = EXTERNAL_LED;
-	GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
+	GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
 	GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_HIGH;
 	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
 	GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
@@ -118,6 +119,14 @@ static void IoHwAb_InitTimers()
 
 	LL_TIM_Init(TIM1, &TIM_Init_Struct);
 
+	LL_TIM_OC_InitTypeDef TIM_OC_InitStruct;
+
+	LL_TIM_OC_StructInit(&TIM_OC_InitStruct);
+
+	TIM_OC_InitStruct.CompareValue = 50;
+	TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_TOGGLE;
+
+	LL_TIM_OC_Init(TIM1, TIM_OC_InitStruct);
 }
 
 void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, bool value)
@@ -136,5 +145,10 @@ void TIM1_IRQHandler()
 {
 	static uint32_t count = 0;
 	count++;
+}
+
+void TIM1_BRK_UP_TRG_COM_IRQHandlery()
+{
+	LL_TIM_OC_SetCompareCH1(TIM1, 100);
 }
 
