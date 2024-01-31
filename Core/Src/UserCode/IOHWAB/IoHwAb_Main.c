@@ -125,8 +125,12 @@ static void IoHwAb_InitTimers()
 
 	TIM_OC_InitStruct.CompareValue = 50;
 	TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_TOGGLE;
+	TIM_OC_InitStruct.OCState = LL_TIM_OCSTATE_ENABLE;
+	LL_TIM_OC_Init(TIM1,LL_TIM_CHANNEL_CH1, &TIM_OC_InitStruct);
 
-	LL_TIM_OC_Init(TIM1, TIM_OC_InitStruct);
+	LL_TIM_EnableCounter(TIM1);
+
+	LL_TIM_OC_ConfigOutput(TIM1, LL_TIM_CHANNEL_CH1, LL_TIM_OCPOLARITY_HIGH);
 }
 
 void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, bool value)
@@ -141,7 +145,7 @@ void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, bool value)
 	}
 }
 
-void TIM1_IRQHandler()
+void TIM1_CC_IRQHandler()
 {
 	static uint32_t count = 0;
 	count++;
@@ -149,6 +153,8 @@ void TIM1_IRQHandler()
 
 void TIM1_BRK_UP_TRG_COM_IRQHandlery()
 {
+	static uint32_t count = 0;
+	count++;
 	LL_TIM_OC_SetCompareCH1(TIM1, 100);
 }
 

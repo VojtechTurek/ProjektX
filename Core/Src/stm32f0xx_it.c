@@ -129,10 +129,7 @@ void PendSV_Handler(void)
 /**
   * @brief This function handles TIM1 capture compare interrupt.
   */
-void TIM1_CC_IRQHandler(void)
-{
 
-}
 
 /* USER CODE BEGIN 1 */
 

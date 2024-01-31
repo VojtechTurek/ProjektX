@@ -82,8 +82,6 @@ int main(void)
 	{
 	/* USER CODE END WHILE */
 		IoHwAb_MainFunction();
-		ButtonHandler_MainFunction();
-		LedHandler_MainFunction();
 		 __WFI();
 	/* USER CODE BEGIN 3 */
 	}
