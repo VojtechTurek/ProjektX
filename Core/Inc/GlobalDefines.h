@@ -12,7 +12,7 @@
 
 #define LED_BUILTIN LL_GPIO_PIN_4
 #define BUTTON_ON_OFF LL_GPIO_PIN_1
-#define EXTERNAL_LED LL_GPIO_PIN_0
+#define EXTERNAL_LED LL_GPIO_PIN_8
 
 #define GENERAL_ARRAY_ROWS(arr) (sizeof(arr)/sizeof(*arr))
 

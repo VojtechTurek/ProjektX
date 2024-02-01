@@ -103,34 +103,36 @@ static void IoHwAb_InitPorts()
 	GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
 	GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
 	LL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+	LL_GPIO_SetAFPin_8_15(GPIOA, LL_GPIO_PIN_8, LL_GPIO_AF_2);
 }
 
 static void IoHwAb_InitTimers()
 {
 	LL_TIM_InitTypeDef TIM_Init_Struct;
 
-	LL_AHB1_GRP1_EnableClock(LL_APB1_GRP2_PERIPH_TIM1);
+	LL_APB1_GRP2_EnableClock(LL_APB1_GRP2_PERIPH_TIM1);
 
 	LL_TIM_StructInit(&TIM_Init_Struct);
 
 	TIM_Init_Struct.Prescaler         = (uint16_t)0x0000;
-	TIM_Init_Struct.Autoreload        = 0x5U;
-	TIM_Init_Struct.CounterMode       = LL_TIM_COUNTERMODE_DOWN;
+	TIM_Init_Struct.Autoreload        = 100;
 
 	LL_TIM_Init(TIM1, &TIM_Init_Struct);
+
+	LL_TIM_EnableCounter(TIM1);
 
 	LL_TIM_OC_InitTypeDef TIM_OC_InitStruct;
 
 	LL_TIM_OC_StructInit(&TIM_OC_InitStruct);
 
 	TIM_OC_InitStruct.CompareValue = 50;
-	TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_TOGGLE;
+	TIM_OC_InitStruct.OCMode = LL_TIM_OCMODE_PWM1;
 	TIM_OC_InitStruct.OCState = LL_TIM_OCSTATE_ENABLE;
 	LL_TIM_OC_Init(TIM1,LL_TIM_CHANNEL_CH1, &TIM_OC_InitStruct);
 
-	LL_TIM_EnableCounter(TIM1);
-
 	LL_TIM_OC_ConfigOutput(TIM1, LL_TIM_CHANNEL_CH1, LL_TIM_OCPOLARITY_HIGH);
+
 }
 
 void IoHwAb_SetPin(uint32_t pin, GPIO_TypeDef * port, bool value)
@@ -153,8 +155,6 @@ void TIM1_CC_IRQHandler()
 
 void TIM1_BRK_UP_TRG_COM_IRQHandlery()
 {
-	static uint32_t count = 0;
-	count++;
-	LL_TIM_OC_SetCompareCH1(TIM1, 100);
+
 }
 
